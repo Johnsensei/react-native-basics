@@ -6,6 +6,7 @@ const ListItems = ({items, remove}) => {
     return(
         items.map((item, i) => (
             <Pressable
+                key={item}
                 onPress={() => remove(i)}
                 //onPress={() => alert('Pressed')}
                 //onLongPress={() => alert('Long pressed')}
@@ -13,7 +14,7 @@ const ListItems = ({items, remove}) => {
                 // onPressIn={() => alert('Pressed In')}
                 // onPressOut={() => alert('Pressed Out')}
             >
-                <View style={styles.listItems} key={item}>
+                <View style={styles.listItems} >
                     <Text>
                         {item}
                     </Text>

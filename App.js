@@ -1,9 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+
 import Nav from './src/Nav';
 import GenerateNumber from './src/GenerateNumber';
 import ListItems from './src/ListItems';
+import Inputs from './src/Inputs';
 
 console.disableYellowBox = true;
 
@@ -54,6 +56,7 @@ export default function App() {
       <View>
         <ListItems items={random} remove={(pos) => onItemRemove(pos)}/>
       </View>
+      <Inputs />
       <StatusBar style="auto" />
     </View>
   );
