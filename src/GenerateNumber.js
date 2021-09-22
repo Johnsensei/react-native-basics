@@ -1,15 +1,16 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableHighlight } from 'react-native';
+import { StyleSheet, Text, View, TouchableHighlight, TouchableOpacity, Pressable } from 'react-native';
 
 const GenerateNumber = ({add}) => (
-    <TouchableHighlight
+    <Pressable
         onPress={() => add()}
-        underlayColor="yellow"
-        activeOpacity={0.1}>
+        //underlayColor="yellow"
+        //activeOpacity={0.1}
+    >
         <View style={styles.generate}>
             <Text style={{color: 'white'}}>Generate Number</Text>
         </View>
-    </TouchableHighlight>
+    </Pressable>
 )
 
 const styles = StyleSheet.create({

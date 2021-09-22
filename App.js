@@ -5,6 +5,8 @@ import Nav from './src/Nav';
 import GenerateNumber from './src/GenerateNumber';
 import ListItems from './src/ListItems';
 
+console.disableYellowBox = true;
+
 export default function App() {
   const [hello, setHello] = useState(true);
   const [random, setRandom] = useState([20, 55]);
@@ -20,6 +22,14 @@ export default function App() {
     const randomVal = Math.floor(Math.random() * 100 + 1);
     const newState = [...random, randomVal];
     setRandom(newState);
+  }
+
+  const onItemRemove = (position) => {
+    //alert('Remove');
+    const newArray = random.filter((item, i) => {
+      return position !== i;
+    });
+    setRandom(newArray);
   }
 
   return (
@@ -42,7 +52,7 @@ export default function App() {
         <GenerateNumber add={() => onAddRandom()}/>
       </View>
       <View>
-        <ListItems items={random}/>
+        <ListItems items={random} remove={(pos) => onItemRemove(pos)}/>
       </View>
       <StatusBar style="auto" />
     </View>
