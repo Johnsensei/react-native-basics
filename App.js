@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, ActivityIndicator } from 'react-native';
 
 import Nav from './src/Nav';
 import GenerateNumber from './src/GenerateNumber';
@@ -36,28 +36,38 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Nav nameOfApp='My app'>Hello and Welcome</Nav>
-      <View>
-        <Text style={styles.headerText}>
-          My name is John.
-        </Text>
-      </View>
-      <View >
-        <Text style={styles.lineText}>
-          I am working on a React Native app.
-        </Text>
-      </View>
-      { hello ?
-        <Text>Hello was true</Text>
-        : null }
-      <View>
-        <GenerateNumber add={() => onAddRandom()}/>
-      </View>
-      <View>
-        <ListItems items={random} remove={(pos) => onItemRemove(pos)}/>
-      </View>
-      <Inputs />
       <StatusBar style="auto" />
+      <Nav nameOfApp='My app'>Hello and Welcome</Nav>
+      <ScrollView
+      // onContentSizeChange={(w, h) => alert(h)}
+      // onMomentumScrollBegin={() => alert('Scrolling')}
+      // onMomentumScrollEnd={() => alert('Scrolling')}
+      // onScroll={() => alert('Scrolling')}
+      style={{width:'100%'}}>
+        <View style={styles.container}>
+          <Text style={styles.headerText}>
+            My name is John.
+          </Text>
+        </View>
+        <View style={styles.container}>
+          <Text style={styles.lineText}>
+            I am working on a React Native app.
+          </Text>
+        </View>
+        { hello ?
+          <Text style={{textAlign: 'center'}}>Hello was true</Text>
+          : null }
+        <View style={styles.container}>
+          <GenerateNumber add={() => onAddRandom()}/>
+        </View>
+        <View style={styles.container}>
+          <ListItems items={random} remove={(pos) => onItemRemove(pos)}/>
+        </View>
+        <View style={styles.container}>
+          <Inputs />
+        </View>
+        {/* <ActivityIndicator size="large" color="#0000ff"/> */}
+      </ScrollView>
     </View>
   );
 }
@@ -85,6 +95,8 @@ const styles = StyleSheet.create({
     color: 'black',
     width: '100%',
     alignItems: 'center',
+    alignContent: 'center',
+    textAlign: 'center',
     marginBottom: 1
   }
 });

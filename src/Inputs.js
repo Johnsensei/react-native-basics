@@ -1,37 +1,75 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Pressable, TextInput } from 'react-native';
+import { Text, View, StyleSheet, TextInput, Button, ScrollView } from 'react-native';
+
 
 const Inputs = () => {
-
-    const [myInput, setMyInput] = useState('');
+    const [myinput,setMyinput] = useState('');
+    const [names,setNames] = useState(['Nightcrawler','Psylocke'])
 
     const onChangeInput = (event) => {
-        //alert(event);
-        setMyInput(event);
+        setMyinput(event);
+    }
+
+    const onAddUser = () => {
+        const newState = [...names, myinput];
+        setNames(newState);
+        setMyinput('');
     }
 
     return(
-        <TextInput
-            style={styles.input}
-            value={myInput}
-            onChange={(e) => onChangeInput(e)}
-            //multiline={true}
-            //maxLength={5}
-            //editable={false}
-            keyboardType='number-pad'
-        />
-    );
+        <>
+            <TextInput
+                style={styles.input}
+                value={myinput}
+                onChangeText={(e)=> onChangeInput(e) }
+                //multiline={true}
+                //maxLength={5}
+            // editable={false}
+                //keyboardType="number-pad"
+            />
+            <Button
+                style={styles.mybutton}
+                title="Add User"
+                onPress={onAddUser}
+            />
+            <View>
+                {names.map(name=>(
+                    <Text 
+                        style={styles.user}
+                        key={name}
+                    >
+                        {name}
+                    </Text>
+                ))}
+            </View>
+        </>
+    )
 }
 
 const styles = StyleSheet.create({
-    input: {
-        backgroundColor: '#f2f2f2',
-        fontSize: 40,
-        alignItems: 'center',
-        padding: 10,
-        marginTop: 20,
-        width: '100%'
+    input:{
+        width:'100%',
+        backgroundColor:'#f2f2f2',
+        marginTop:20,
+        marginBottom: 20,
+        padding:10,
+        fontSize:20
     },
+    mybutton: {
+        marginTop: 20,
+        marginBottom: 20,
+        //padding: 10
+    },
+    user:{
+        textAlign: 'center',
+        fontSize:20,
+        //borderWidth:1,
+        //borderColor:'#cecece',
+        padding:1,
+        marginTop: 10,
+        marginBottom:1,
+        alignContent: 'center'
+    }
 });
 
 export default Inputs;
