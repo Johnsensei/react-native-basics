@@ -1,11 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, ScrollView, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, ActivityIndicator, Image, ImageBackground } from 'react-native';
 
 import Nav from './src/Nav';
 import GenerateNumber from './src/GenerateNumber';
 import ListItems from './src/ListItems';
 import Inputs from './src/Inputs';
+
+import Johnsensei from './img/JohnsenseiWalk.png'
 
 console.disableYellowBox = true;
 
@@ -48,6 +50,10 @@ export default function App() {
           <Text style={styles.headerText}>
             My name is John.
           </Text>
+          {/* Put image here */}
+          <Image
+            source={Johnsensei}
+          />
         </View>
         <View style={styles.container}>
           <Text style={styles.lineText}>
@@ -65,8 +71,16 @@ export default function App() {
         </View>
         <View style={styles.container}>
           <Inputs />
+          <Image
+          // source={{uri: 'https://en.wikipedia.org/wiki/X-Men#/media/File:X-Men_legacy.jpg/'}}
+          source={{uri:'https://picsum.photos/400/400'}}
+          style={{width: 200, height: 400, marginTop: 1}}
+          resizeMode='contain'
+          // onLoadEnd={()=> alert('image loaded')}
+        />
         </View>
         {/* <ActivityIndicator size="large" color="#0000ff"/> */}
+        
       </ScrollView>
     </View>
   );
