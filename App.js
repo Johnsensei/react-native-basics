@@ -6,6 +6,7 @@ import Nav from './src/Nav';
 import GenerateNumber from './src/GenerateNumber';
 import ListItems from './src/ListItems';
 import Inputs from './src/Inputs';
+import ModalComponent from './src/ModalComponent';
 
 import Johnsensei from './img/JohnsenseiWalk.png'
 
@@ -80,7 +81,7 @@ export default function App() {
         />
         </View>
         {/* <ActivityIndicator size="large" color="#0000ff"/> */}
-        
+        <ModalComponent/>
       </ScrollView>
     </View>
   );
